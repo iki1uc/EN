@@ -1,33 +1,83 @@
 <!-- EN / index.html -->
 <EN>
-  <LOAD>
+
+  <!-- ========================= -->
+  <!--  LOAD‑SECTION (EU‑ENG‑GB) -->
+  <!-- ========================= -->
+  <LOAD mode="EU‑ENG‑GB">
     <ID src="ID.html" />
-    <MODULE src="HH/" />
+
+    <!-- CORE MODULES -->
+    <MODULE src="DATA/" />
+    <MODULE src="EX/" />
+
+    <!-- HH‑SYSTEM (HOST HUB) -->
+    <MODULE src="HH/" bind="EN→HH" />
+
+    <!-- ROOT‑SYSTEM -->
     <MODULE src="ROOT/" />
+
+    <!-- API‑SYSTEM -->
     <MODULE src="API/" />
+
+    <!-- ANKER‑SYSTEM -->
     <MODULE src="ANKER/" />
+
+    <!-- OUT‑SYSTEM -->
     <MODULE src="OUT/" />
   </LOAD>
 
+
+  <!-- ========================= -->
+  <!--  SYSTEM‑IDENTITY (EN‑CORE) -->
+  <!-- ========================= -->
   <SYSTEM>
     <NAME>EN</NAME>
-    <INSTANCE>ENG</INSTANCE>
-    <SIGNATURE>NO.eu ENG gb</SIGNATURE>
+    <INSTANCE>ENG‑CORE</INSTANCE>
+    <SIGNATURE>EU.eng.gb</SIGNATURE>
     <MODE>standalone</MODE>
     <STATUS>active</STATUS>
+
+    <!-- HH‑BINDUNG -->
+    <BIND>
+      <HOST>HH</HOST>
+      <LINK>EN→HH</LINK>
+      <STATE>connected</STATE>
+    </BIND>
   </SYSTEM>
 
+
+  <!-- ========================= -->
+  <!--  RUN‑SECTION -->
+  <!-- ========================= -->
   <RUN>
-    <BOOT src="RUN.boot" />
-    <LIVE src="RUN/" />
+    <BOOT src="RUN.boot" mode="cold‑start" />
+    <LIVE src="RUN/" mode="continuous" />
   </RUN>
 
+
+  <!-- ========================= -->
+  <!--  DISPLAY‑SECTION -->
+  <!-- ========================= -->
   <DISPLAY>
-    <STATUS src="HH/status" />
-    <VECTOR src="HH/vector" />
+
+    <!-- HH‑STATUS -->
+    <STATUS src="HH/status" bind="EN→HH" />
+
+    <!-- HH‑VECTOR -->
+    <VECTOR src="HH/vector" mode="live" />
+
+    <!-- ROOT‑VIEW -->
     <ROOT src="ROOT/" />
+
+    <!-- API‑VIEW -->
     <API src="API/" />
+
+    <!-- ANKER‑VIEW -->
     <ANKER src="ANKER/" />
+
+    <!-- OUT‑VECTOR -->
     <OUT src="vector.out" />
   </DISPLAY>
+
 </EN>
