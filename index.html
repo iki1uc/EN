@@ -2,34 +2,31 @@
 <EN>
 
   <!-- ========================= -->
-  <!--  LOAD‑SECTION (EU‑ENG‑GB) -->
+  <!--  LOAD (EU‑ENG‑GB MODE)   -->
   <!-- ========================= -->
   <LOAD mode="EU‑ENG‑GB">
+
+    <!-- IDENTITY -->
     <ID src="ID.html" />
 
     <!-- CORE MODULES -->
-    <MODULE src="DATA/" />
-    <MODULE src="EX/" />
+    <MODULE src="DATA/" type="core" />
+    <MODULE src="EX/" type="core" />
 
-    <!-- HH‑SYSTEM (HOST HUB) -->
-    <MODULE src="HH/" bind="EN→HH" />
+    <!-- HH – HOST HUB (FULL SHOW) -->
+    <MODULE src="HH/" bind="EN→HH" mode="visual" />
 
-    <!-- ROOT‑SYSTEM -->
+    <!-- ROOT / API / ANKER / OUT -->
     <MODULE src="ROOT/" />
-
-    <!-- API‑SYSTEM -->
     <MODULE src="API/" />
-
-    <!-- ANKER‑SYSTEM -->
     <MODULE src="ANKER/" />
-
-    <!-- OUT‑SYSTEM -->
     <MODULE src="OUT/" />
+
   </LOAD>
 
 
   <!-- ========================= -->
-  <!--  SYSTEM‑IDENTITY (EN‑CORE) -->
+  <!--  SYSTEM (EN‑CORE)        -->
   <!-- ========================= -->
   <SYSTEM>
     <NAME>EN</NAME>
@@ -39,16 +36,17 @@
     <STATUS>active</STATUS>
 
     <!-- HH‑BINDUNG -->
-    <BIND>
-      <HOST>HH</HOST>
+    <HOST>
+      <TARGET>HH</TARGET>
       <LINK>EN→HH</LINK>
       <STATE>connected</STATE>
-    </BIND>
+      <LEVEL>full‑visual</LEVEL>
+    </HOST>
   </SYSTEM>
 
 
   <!-- ========================= -->
-  <!--  RUN‑SECTION -->
+  <!--  RUN (BOOT + LIVE)       -->
   <!-- ========================= -->
   <RUN>
     <BOOT src="RUN.boot" mode="cold‑start" />
@@ -57,27 +55,17 @@
 
 
   <!-- ========================= -->
-  <!--  DISPLAY‑SECTION -->
+  <!--  DISPLAY (FULL HH SHOW)  -->
   <!-- ========================= -->
   <DISPLAY>
 
-    <!-- HH‑STATUS -->
-    <STATUS src="HH/status" bind="EN→HH" />
+    <!-- HH STATUS -->
+    <STATUS src="HH/status" mode="live" />
 
-    <!-- HH‑VECTOR -->
-    <VECTOR src="HH/vector" mode="live" />
+    <!-- HH VECTOR -->
+    <VECTOR src="HH/vector" mode="dynamic" />
 
-    <!-- ROOT‑VIEW -->
-    <ROOT src="ROOT/" />
+    <!-- HH ROOM -->
+    <ROOM src="HH/room" mode="bind" />
 
-    <!-- API‑VIEW -->
-    <API src="API/" />
-
-    <!-- ANKER‑VIEW -->
-    <ANKER src="ANKER/" />
-
-    <!-- OUT‑VECTOR -->
-    <OUT src="vector.out" />
-  </DISPLAY>
-
-</EN>
+    <!-- HH ACTIVATE -->
